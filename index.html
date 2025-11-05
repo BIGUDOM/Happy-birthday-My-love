@@ -235,26 +235,85 @@
     .balloon{position:absolute;width:20px;height:30px;background:radial-gradient(circle,var(--rose) 0%,#fff 80%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;opacity:0.6;animation:floatBalloon 8s linear infinite}
     @keyframes floatBalloon{0%{transform:translateY(0) scale(0.8);opacity:0.6}50%{opacity:0.4}100%{transform:translateY(-400px) scale(1.2);opacity:0}}
 
-    /* Gifts section */
-    .gifts-wrap{max-width:95%;margin:22px auto;padding:12px;border-radius:14px;z-index:10}
-    .gift-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .gift{width:86px;height:86px;border-radius:14px;background:linear-gradient(135deg,#ff99aa,#d6336c);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;cursor:pointer;position:relative;box-shadow:0 8px 24px rgba(214,83,117,0.22);transition:all .28s}
-    .gift:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 20px 48px rgba(214,83,117,0.28)}
-    .gift.expanded{width:92%;height:auto;border-radius:16px;padding:16px;display:block;background:linear-gradient(180deg,#fff,#fff6f9);color:var(--deep)}
-    .gift .mini{font-size:1.2rem;opacity:0.98}
-    .gift .closeGift{position:absolute;right:10px;top:8px;background:rgba(0,0,0,0.06);border-radius:8px;padding:6px;cursor:pointer}
-    .giftContent {
-  display: none;
-  position: absolute;
-  background: rgba(0,0,0,0.85);
-  color: #fff;
-  padding: 1rem;
-  border-radius: 1rem;
+ /* Gifts section */
+.gifts-wrap {
+  max-width: 95%;
+  margin: 22px auto;
+  padding: 12px;
+  border-radius: 14px;
   z-index: 10;
 }
+.gift-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gift {
+  width: 86px;
+  height: 86px;
+  border-radius: 14px;
+  background: linear-gradient(135deg,#ff99aa,#d6336c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(214,83,117,0.22);
+  transition: all .28s;
+}
+.gift:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 20px 48px rgba(214,83,117,0.28);
+}
+.gift.expanded {
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 16px;
+  padding: 16px;
+  display: block;
+  background: linear-gradient(180deg,#fff,#fff6f9);
+  color: var(--deep);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+.gift .mini {
+  font-size: 1.2rem;
+  opacity: 0.98;
+}
+.gift .closeGift {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+}
+.giftContent {
+  display: none;
+  text-align: center;
+}
+.gift.expanded .giftContent {
+  display: block;
+}
+.giftMedia {
+  max-width: 100%;
+  max-height: 400px; /* larger pop-up size */
+  height: auto;
+  display: block;
+  margin: 12px auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
 
-    .gift.expanded .giftContent{display:block}
-    .giftMedia{max-width:100%;height:auto;border-radius:10px;display:block}
 
     /* small utility */
     .center{text-align:center}
@@ -333,18 +392,32 @@
   <div class="gift-grid" id="giftGrid">
     <div class="gift" data-kind="image" data-src="WhatsApp Image 2025-11-04 at 17.14.00.jpg">
       <div class="mini">🎁</div>
-      <div class="giftContent"><div class="closeGift">✕</div><img class="giftMedia" src="call.jpg" alt="Gift image"/><p class="mini">A memory of us 💞</p></div>
+      <div class="giftContent">
+        <div class="closeGift">✕</div>
+        <img class="giftMedia" src="call.jpg" alt="Gift image"/>
+        <p class="mini">A memory of us 💞</p>
+      </div>
     </div>
     <div class="gift" data-kind="message" data-src="Surprise! I love you more every day ❤️">
       <div class="mini">🎀</div>
-      <div class="giftContent"><div class="closeGift">✕</div><p style="font-family:'Dancing Script',cursive;font-size:1.15rem;color:#5a0022">Surprise! I love you more every day ❤️</p></div>
+      <div class="giftContent">
+        <div class="closeGift">✕</div>
+        <p style="font-family:'Dancing Script',cursive;font-size:1.25rem;color:#5a0022; text-align:center;">
+          Surprise! I love you more every day ❤️
+        </p>
+      </div>
     </div>
     <div class="gift" data-kind="video" data-src="my vid.mp4">
       <div class="mini">🎬</div>
-      <div class="giftContent"><div class="closeGift">✕</div><video class="giftMedia" muted playsinline loop src="my vid.mp4"></video><p class="mini">A little clip for you</p></div>
+      <div class="giftContent">
+        <div class="closeGift">✕</div>
+        <video class="giftMedia" muted playsinline loop src="my vid.mp4" controls></video>
+        <p class="mini">A little clip for you</p>
+      </div>
     </div>
   </div>
 </section>
+
 
 <audio id="bgMusic" loop>
   <source src="audio/Perfect-EdSheeran.mp3" type="audio/mpeg">
@@ -422,21 +495,30 @@ frames.forEach(f=>{
 });
 lightbox.addEventListener('click',()=>{lightbox.style.display='none';lightboxContent.innerHTML='';});
 
-/* Gifts */
 document.querySelectorAll('.gift').forEach(g => {
   const mini = g.querySelector('.mini');
   const content = g.querySelector('.giftContent');
   const closeBtn = g.querySelector('.closeGift');
+  const media = g.querySelector('.giftMedia');
 
-  // show gift content
   mini.addEventListener('click', () => {
+    g.classList.add('expanded');
     content.style.display = 'block';
+
+    if (media && media.tagName.toLowerCase() === 'video') {
+      media.play();
+    }
   });
 
-  // close gift content
   closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // prevent triggering parent click
+    e.stopPropagation();
     content.style.display = 'none';
+    g.classList.remove('expanded');
+
+    if (media && media.tagName.toLowerCase() === 'video') {
+      media.pause();
+      media.currentTime = 0;
+    }
   });
 });
 
