@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" class="animated-bg">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>To My Love ❤️</title>
+<style>
+/* Additional Animations and Effects */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-20px); }
+        60% { transform: translateY(-10px); }
+    }
+
+    .bounce {
+        animation: bounce 1s infinite;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .fade-in {
+        animation: fadeIn 1s forwards;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .rotate {
+        animation: rotate 2s linear infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .pulse {
+        animation: pulse 1.5s infinite;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+
+    /* Colors */
+    :root{
+      --rose:#d6336c;
+      --deep:#5a0022;
+      --soft:#fff7f9;
+      --glass:rgba(255,255,255,0.92);
+      --accent1:#ffd6e2;
+      --accent2:#ffdde1;
+    }
+
+    /* General */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;overflow-x:hidden;scroll-behavior:smooth;position:relative;background:#fff;}
+    body{
+      background:linear-gradient(135deg,#ffe6eb,#fff0f5);
+      animation:bgShimmer 30s ease infinite alternate;
+      color:var(--deep);
+    }
+
+    /* Background shimmer */
+    @keyframes bgShimmer{
+      0%{background:linear-gradient(135deg,#ffe6eb,#fff0f5);}
+      25%{background:linear-gradient(135deg,var(--accent2),#ffe6f0);}
+      50%{background:linear-gradient(135deg,#fff0f5,#ffd6e2);}
+      75%{background:linear-gradient(135deg,#ffe6eb,#fff7f9);}
+      100%{background:linear-gradient(135deg,#ffe6eb,#fff0f5);}
+    }
+
+    /* Entrance cinematic color pulse behind pop */
+    .entrance-bg-animate{
+      position:fixed;inset:0;z-index:1190;pointer-events:none;mix-blend-mode:screen;opacity:0.28;
+      background:radial-gradient(circle at 20% 20%, rgba(255,210,230,0.45), transparent 10%),
+                 radial-gradient(circle at 80% 80%, rgba(255,230,210,0.28), transparent 12%);
+      animation:entrancePulse 6s infinite;
+    }
+    @keyframes entrancePulse{
+      0%{filter: hue-rotate(0deg) saturate(1);}
+      50%{filter: hue-rotate(20deg) saturate(1.15);}
+      100%{filter: hue-rotate(0deg) saturate(1);}
+    }
+
+    /* Star field */
+    #starField{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .star{position:absolute;background:white;border-radius:50%;opacity:0.8;animation:twinkle linear infinite}
+    @keyframes twinkle{0%,100%{opacity:0.18}50%{opacity:1}}
+
+    /* Floating sparkles layer for entrance */
+    .sparkles‑entrance{position:absolute;inset:0;pointer-events:none;z-index:1205;overflow:hidden}
+    .sparkle-e{position:absolute;width:6px;height:6px;border-radius:50%;background:linear-gradient(90deg,#fff7ff,#ffd6e2);opacity:0.9;filter:blur(.6px);animation:rise 6s linear infinite;}
+    @keyframes rise{0%{transform:translateY(30vh) scale(0.6);opacity:0}20%{opacity:1}100%{transform:translateY(-40vh) scale(1.2);opacity:0}}
+
+    /* Header */
+    header{padding:50px 12px 20px;text-align:center;position:relative;z-index:10;}
+    header h1{font-family:'Dancing Script',cursive;font-size:2.5rem;margin:0;color:var(--rose);text-shadow:0 3px 8px rgba(214,83,117,0.12);}
+    header p{margin-top:10px;color:#6b123a;font-size:1rem;max-width:90%;margin:auto;}
+
+    /* Role text */
+    #roleText{position:fixed;top:30px;left:50%;transform:translateX(-50%);font-family:'Dancing Script',cursive;font-size:1.8rem;color:#ff3366;z-index:1215;white-space:nowrap;text-shadow:0 2px 14px rgba(214,83,117,0.45);}
+
+    /* Entrance modal */
+    .entrance-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,6,12,0.45);backdrop-filter:blur(6px);z-index:1220;transition:opacity .5s}
+    .pop{background:linear-gradient(135deg,#fff,#ffeef3);border-radius:18px;padding:28px 20px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);transform:translateY(8px) scale(.96);opacity:0;animation:popIn 700ms cubic-bezier(.2,.9,.2,1) forwards}
+    .pop h2{margin:0;font-family:'Dancing Script',cursive;font-size:2rem;color:var(--rose);text-shadow:0 6px 18px rgba(214,83,117,0.28);letter-spacing:0.6px;}
+    @keyframes popIn{0%{opacity:0;transform:translateY(8px) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+    /* entrance title letter‑by‑letter */
+    .entrance-title span{display:inline-block;opacity:0;transform:translateY(8px) rotate(-1deg);}
+
+    /* CTA button */
+    .pop p{margin-top:8px;color:#6b123a}
+    .cta{margin-top:14px;padding:12px 20px;border-radius:999px;background:var(--rose);color:white;border:none;cursor:pointer;font-weight:700;font-size:1rem;box-shadow:0 8px 24px rgba(214,83,117,0.28);position:relative;overflow:visible}
+    .cta:after{content:"";position:absolute;inset:-6px;left:-6px;border-radius:999px;box-shadow:0 0 30px rgba(214,83,117,0.18);opacity:0;transform:scale(.95);transition:all .35s}
+    .cta.pulse{animation:ctaPulse 1500ms infinite;}
+    @keyframes ctaPulse{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+    .cta:active{transform:translateY(2px)}
+    .pop .rings{position:absolute;left:50%;transform:translateX(-50%);top:50%;width:160px;height:160px;z-index:-1;pointer-events:none}
+    .ring{position:absolute;border-radius:50%;border:2px solid rgba(214,83,117,0.08);left:50%;top:50%;transform:translate(-50%,-50%);animation:ringPop 1.8s infinite}
+    .ring.r1{width:220px;height:220px;animation-delay:0s}
+    .ring.r2{width:260px;height:260px;animation-delay:.6s}
+    @keyframes ringPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.9)}50%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.35)}}
+
+    /* Letter Section */
+    .letter{max-width:95%;margin:20px auto;background:var(--glass);border-radius:20px;padding:30px 20px 40px;box-shadow:0 12px 40px rgba(0,0,0,0.08);position:relative;font-size:1rem;line-height:1.8;color:black;display:block;overflow:hidden;z-index:10;
+    }
+
+    @keyframes backgroundAnimation {
+        0% {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+        }
+        50% {
+            background: linear-gradient(135deg, rgba(255, 200, 200, 0.3), rgba(200, 200, 255, 0.3));
+        }
+        100% {
+            background: linear-gradient(135deg, rgba(200, 255, 200, 0.3), rgba(255, 200, 255, 0.3));
+        }
+    }
+    .letter p{display:block;white-space:pre-wrap;font-family:'Poppins',sans-serif;}
+    .signature{margin-top:20px;text-align:right;font-style:italic;font-family:'Dancing Script',cursive;font-size:1.3rem}
+
+    /* Gallery */
+    .gallery-wrap{max-width:95%;margin:20px auto;padding:20px;background:linear-gradient(180deg,#fff,#fff6f9);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.06);position:relative;z-index:10;overflow:visible}
+    .gallery-wrap h3{color:var(--rose);font-family:'Dancing Script',cursive;font-size:1.4rem;text-align:center;}
+    .frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px;padding:4px}
+    .frame{background:#fff;border-radius:14px;overflow:hidden;height:200px;position:relative;display:flex;align-items:center;justify-content:center;border:1px solid rgba(214,83,117,0.06);box-shadow:0 10px 30px rgba(214,83,117,0.04);cursor:pointer;transition:all 0.45s ease;will-change:transform,box-shadow;}
+    .frame:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 22px 50px rgba(214,83,117,0.18)}
+    .frame.neon{box-shadow:0 0 0 rgba(214,83,117,0);animation:neonPulse 2.6s infinite linear}
+    @keyframes neonPulse{0%{box-shadow:0 0 6px rgba(214,83,117,0.08)}50%{box-shadow:0 0 30px rgba(214,83,117,0.16)}100%{box-shadow:0 0 6px rgba(214,83,117,0.08)}}
+    .frame video,.frame img{width:100%;height:100%;object-fit:cover;border-radius:14px;transition:transform 0.45s;cursor:pointer;display:block}
+    .frame .caption{position:absolute;left:8px;right:8px;bottom:8px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.55));color:white;padding:6px;border-radius:8px;font-size:0.9rem;opacity:0;transform:translateY(8px);transition:all .28s}
+
+    /* frame gif/frame entry glow when in view */
+    .frame.inview{transform:translateY(0) scale(1);opacity:1}
+    .frame .badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,0.12);padding:6px 8px;border-radius:8px;font-size:0.8rem;color:white;backdrop-filter:blur(6px);}
+
+    /* Lightbox */
+    .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:2000;cursor:pointer}
+    .lightbox.active{display:flex;animation:fadeIn .25s ease forwards}
+    .lightbox-content{max-width:92%;max-height:86vh;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,0.6);transform:scale(.98);transition:transform .2s}
+    .lightbox video, .lightbox img{width:100%;height:auto;display:block}
+    /* Lightbox animations */
+.lightbox.active {
+  display: flex;
+  opacity: 0;
+  animation: fadeInScale 0.4s forwards;
+}
+
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Hearts for lightbox */
+.lightbox-heart {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--rose);
+  transform: rotate(45deg);
+  border-radius: 4px 4px 0 0;
+  animation: floatUp 3s linear forwards;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Sparkle */
+.lightbox-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle,#fff,#ff99aa);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleAnim 0.6s forwards;
+}
+
+@keyframes sparkleAnim {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3) translateY(-20px); opacity: 0; }
+}
+
+
+    /* Wish Section */
+    .wish-wrap{max-width:95%;margin:28px auto;padding:20px;background:linear-gradient(180deg,#fff,#fff7fb);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.06);position:relative;overflow:hidden;z-index:10;}
+    .wish-wrap h3{font-family:'Dancing Script',cursive;color:var(--rose);margin:0;font-size:1.4rem;text-align:center;}
+    .wish-form{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;justify-content:center;}
+    .wish-form input{flex:1;padding:10px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);font-size:1rem;}
+    .wish-form button{padding:10px 16px;border-radius:999px;background:var(--rose);color:white;border:none;cursor:pointer;font-weight:600;}
+    .wish-display{margin-top:16px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff6f9,#fff);border:1px solid rgba(214,83,117,0.06);min-height:60px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+    .wish-display .wish-text{font-size:1.1rem;color:#000;font-family:'Dancing Script',cursive;text-align:center;animation:fadeWish 1s forwards}
+    @keyframes fadeWish{0%{opacity:0}100%{opacity:1}}
+
+    /* Particle trail */
+    .particle{position:absolute;width:8px;height:8px;border-radius:50%;pointer-events:none;opacity:0.8;animation:particleAnim 1s forwards}
+    @keyframes particleAnim{0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--x), var(--y)) scale(0);opacity:0}}
+
+    /* Floating hearts */
+    .heart-floating{position:absolute;width:12px;height:12px;background:var(--rose);transform:rotate(45deg);opacity:0.6;border-radius:4px 4px 0 0;animation:floatUp 6s linear infinite}
+    @keyframes floatUp{0%{transform:translateY(0) rotate(45deg) scale(0.8);opacity:0.6}50%{opacity:0.4}100%{transform:translateY(-350px) rotate(45deg) scale(1.4);opacity:0}}
+
+    /* Shooting stars */
+    .shooting-star{position:absolute;width:2px;height:80px;background:linear-gradient(to bottom, white, transparent);opacity:0.8;transform:rotate(45deg);animation:shootStar 2s linear infinite}
+    @keyframes shootStar{0%{transform:translateX(0) translateY(0) rotate(45deg);opacity:1}100%{transform:translateX(300px) translateY(-300px) rotate(45deg);opacity:0}}
+
+    /* Confetti */
+    .confetti{position:absolute;width:8px;height:8px;opacity:0.9;pointer-events:none;animation:confettiFall 3s linear forwards;border-radius:2px}
+    @keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(400px) rotate(360deg);opacity:0}}
+
+    /* Balloons */
+    .balloon{position:absolute;width:20px;height:30px;background:radial-gradient(circle,var(--rose) 0%,#fff 80%);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;opacity:0.6;animation:floatBalloon 8s linear infinite}
+    @keyframes floatBalloon{0%{transform:translateY(0) scale(0.8);opacity:0.6}50%{opacity:0.4}100%{transform:translateY(-400px) scale(1.2);opacity:0}}
+
+    /* Gifts section */
+    .gifts-wrap{max-width:95%;margin:22px auto;padding:12px;border-radius:14px;z-index:10}
+    .gift-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .gift{width:86px;height:86px;border-radius:14px;background:linear-gradient(135deg,#ff99aa,#d6336c);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;cursor:pointer;position:relative;box-shadow:0 8px 24px rgba(214,83,117,0.22);transition:all .28s}
+    .gift:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 20px 48px rgba(214,83,117,0.28)}
+    .gift.expanded{width:92%;height:auto;border-radius:16px;padding:16px;display:block;background:linear-gradient(180deg,#fff,#fff6f9);color:var(--deep)}
+    .gift .mini{font-size:1.2rem;opacity:0.98}
+    .gift .closeGift{position:absolute;right:10px;top:8px;background:rgba(0,0,0,0.06);border-radius:8px;padding:6px;cursor:pointer}
+    .giftContent {
+  display: none;
+  position: absolute;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+    .gift.expanded .giftContent{display:block}
+    .giftMedia{max-width:100%;height:auto;border-radius:10px;display:block}
+
+    /* small utility */
+    .center{text-align:center}
+    @media (min-width:900px){
+      .gift.expanded{width:640px}
+    }
+/* Corrected data-* attribute references in JS will now work */
+@keyframes bounce {0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-20px);}60%{transform:translateY(-10px);}}
+.bounce{animation:bounce 1s infinite;}
+/* ...rest of your CSS unchanged ... */
+</style>
+</head>
+<body>
+<div class="entrance-bg-animate"></div>
+<div id="starField"></div>
+<div id="roleText">MY EVERYTHING</div>
+
+<!-- Entrance Modal -->
+<div id="entrance" class="entrance-wrap">
+  <div class="sparkles-entrance"></div>
+  <div class="pop" role="dialog" aria-label="Welcome">
+   <h2 class="entrance-title" id="entranceTitle">
+  Happy Birthday - My Everything 💖
+</h2>
+
+    <p class="center">Welcome to your special corner. Click below to open your letter.</p>
+    <div class="rings"><div class="ring r1"></div><div class="ring r2"></div></div>
+    <button class="cta pulse" id="openLetter" aria-label="Open Your Letter">Open Your Letter</button>
+  </div>
+</div>
+
+<header>
+  <h1>To My Beautiful Girlfriend</h1>
+  <p>My heart wrote this for you — take your time, read slowly, and feel everything I mean.</p>
+</header>
+
+<main class="letter" id="letter">
+  <p data-text="My love, ❤️"></p>
+  <p data-text="From the very first moment I met you, something in my world changed forever😭. You brought color into my grey skies, peace into my storms, and laughter into my quiet. You are the melody that plays endlessly in my heart, the gentle warmth I crave even on the coldest days."></p>
+  <p data-text="Today, as I wish you a Happy Birthday 🎂, I want to remind you how deeply you are loved — not just for your beauty, but for the heart that beats with kindness, the soul that shines with strength, and the smile that heals every wound in me."></p>
+  <p data-text="You are amazing in every way. You make love feel pure, simple, and endless. Every heartbeat whispers your name, and every thought of you paints a smile across my face. You are my peace, my muse, my safe place, and my forever inspiration."></p>
+  <p data-text="When I think about us, I think about laughter shared under the stars, our hands finding each other without thought, and the way your eyes hold galaxies that only I seem to understand. You are my dream come true — the wish I made long before I knew what I was wishing for."></p>
+  <p data-text="Even when miles may separate us, know this — I am always with you. I carry your love like a heartbeat that never fades. You are never alone, my darling. My love will always find you, wrap around you, and whisper: “You are enough. You are loved. You are everything.”"></p>
+  <p data-text="So here’s to you — to the laughter we share, the memories we build, and the future that’s waiting with open arms. I love you endlessly, my heart, my best friend, my everything. 💞"></p>
+  <p class="signature" data-text="Forever Yours,\n— Your Love ❤️"></p>
+</main>
+
+<!-- Gallery -->
+<section class="gallery-wrap" aria-label="Gallery">
+  <h3>Your Moments — 6 Frames</h3>
+  <div class="frames" id="frames">
+    <div class="frame" data-type="video"><video muted autoplay loop playsinline src="WhatsApp Video 2025-11-04 at 17.13.40_55766756.mp4"></video><div class="caption">6 months of amazing moments ❤️</div></div>
+    <div class="frame" data-type="video"><video muted autoplay loop playsinline src="WhatsApp Video 2025-11-04 at 17.13.44_54ac3812.mp4"></video><div class="caption">You are my sunshine ☀️</div></div>
+    <div class="frame" data-type="image"><img src="WhatsApp Image 2025-11-04 at 17.13.52_b86690f0.jpg" alt="Frame 3"></div>
+    <div class="frame" data-type="video"><video muted autoplay loop playsinline src="WhatsApp Video 2025-11-04 at 17.13.47_d05c3e06.mp4"></video><div class="caption">Every day with you is magic ✨</div></div>
+    <div class="frame" data-type="video"><video muted autoplay loop playsinline src="WhatsApp Video 2025-11-04 at 17.13.51_f9a6572c.mp4"></video><div class="caption">My calm, my home 🏡</div></div>
+    <div class="frame" data-type="video"><video muted autoplay loop playsinline src="WhatsApp Video 2025-11-04 at 17.13.55_65f98d5c.mp4"></video><div class="caption">Forever and always 💞</div></div>
+  </div>
+</section>
+
+<!-- Wish Section -->
+<section class="wish-wrap">
+  <h3>Make a Wish, My Love 🎂💭</h3>
+  <div class="wish-form">
+    <input id="wishInput" placeholder="Type your wish here..."/>
+    <button id="submitWish">Submit</button>
+  </div>
+  <div class="wish-display" id="wishDisplay">
+    <div class="wish-text">No wish yet — your wish will appear here ✨</div>
+  </div>
+</section>
+
+<!-- Gifts Section -->
+<section class="gifts-wrap center" aria-label="Gifts">
+  <h3>Your Gifts 🎁</h3>
+  <div class="gift-grid" id="giftGrid">
+    <div class="gift" data-kind="image" data-src="WhatsApp Image 2025-11-04 at 17.14.00.jpg">
+      <div class="mini">🎁</div>
+      <div class="giftContent"><div class="closeGift">✕</div><img class="giftMedia" src="call.jpg" alt="Gift image"/><p class="mini">A memory of us 💞</p></div>
+    </div>
+    <div class="gift" data-kind="message" data-src="Surprise! I love you more every day ❤️">
+      <div class="mini">🎀</div>
+      <div class="giftContent"><div class="closeGift">✕</div><p style="font-family:'Dancing Script',cursive;font-size:1.15rem;color:#5a0022">Surprise! I love you more every day ❤️</p></div>
+    </div>
+    <div class="gift" data-kind="video" data-src="my vid.mp4">
+      <div class="mini">🎬</div>
+      <div class="giftContent"><div class="closeGift">✕</div><video class="giftMedia" muted playsinline loop src="my vid.mp4"></video><p class="mini">A little clip for you</p></div>
+    </div>
+  </div>
+</section>
+
+<audio id="bgMusic" loop>
+  <source src="audio/Perfect-EdSheeran.mp3" type="audio/mpeg">
+</audio>
+
+<div class="lightbox" id="lightbox"><div class="lightbox-content" id="lightboxContent"></div></div>
+
+<script>
+
+const roles = [
+  "My Everything",
+  "My Life",
+  "My Fine Wine",
+  "My Wifey",
+  "My Sunshine",
+  "My Angel",
+  "My Heart"
+];
+const roleText = document.getElementById("roleText");
+let roleIndex = 0;
+setInterval(() => {
+  roleText.textContent = roles[roleIndex];
+  roleIndex = (roleIndex + 1) % roles.length;
+}, 2000); // change every 2 seconds
+
+/* JS cleaned and corrected for all data-* references, video autoplay & lightbox logic */
+const rand=(min,max)=>Math.random()*(max-min)+min;
+
+/* Entrance title letter animation */
+const letters = document.querySelectorAll('.pop span');
+letters.forEach((l,i)=>l.style.animation=`bounce 1s ${(i/15).toFixed(2)}s infinite`);
+
+const openLetterBtn = document.getElementById('openLetter');
+const entrance = document.getElementById('entrance');
+const letter = document.getElementById('letter');
+
+openLetterBtn.addEventListener('click',()=>{
+  entrance.style.opacity=0;
+  setTimeout(()=>entrance.style.display='none',600);
+  letter.querySelectorAll('p').forEach((p)=>{
+    let txt=p.dataset.text;
+    let idx=0;
+    const interval=setInterval(()=>{
+      if(idx>=txt.length){clearInterval(interval);return;}
+      p.textContent+=txt[idx];
+      idx++;
+    },40);
+  });
+  document.getElementById('bgMusic').play();
+});
+
+
+
+
+/* Frames lightbox */
+const frames = document.querySelectorAll('.frame');
+const lightbox = document.getElementById('lightbox');
+const lightboxContent = document.getElementById('lightboxContent');
+frames.forEach(f=>{
+  f.addEventListener('click',()=>{
+    const type=f.dataset.type;
+    lightboxContent.innerHTML='';
+    if(type==='video'){
+      const vid=document.createElement('video');
+      vid.src=f.querySelector('video').src;
+      vid.controls=true;vid.autoplay=true;vid.loop=true;
+      lightboxContent.appendChild(vid);
+    }else{
+      const img=document.createElement('img');
+      img.src=f.querySelector('img').src;
+      lightboxContent.appendChild(img);
+    }
+    lightbox.style.display='flex';
+  });
+});
+lightbox.addEventListener('click',()=>{lightbox.style.display='none';lightboxContent.innerHTML='';});
+
+/* Gifts */
+document.querySelectorAll('.gift').forEach(g => {
+  const mini = g.querySelector('.mini');
+  const content = g.querySelector('.giftContent');
+  const closeBtn = g.querySelector('.closeGift');
+
+  // show gift content
+  mini.addEventListener('click', () => {
+    content.style.display = 'block';
+  });
+
+  // close gift content
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevent triggering parent click
+    content.style.display = 'none';
+  });
+});
+
+
+/* Starfield & sparkles */
+const starField=document.getElementById('starField');
+for(let i=0;i<120;i++){
+  let s=document.createElement('div');s.className='star';
+  s.style.width=s.style.height=rand(1,3)+'px';
+  s.style.top=rand(0,100)+'%';
+  s.style.left=rand(0,100)+'%';
+  s.style.animationDuration=rand(2,6)+'s';
+  starField.appendChild(s);
+}
+</script>
+</body>
+</html>
